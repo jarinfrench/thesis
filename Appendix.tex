@@ -1,0 +1,21 @@
+\documentclass[12pt]{report}
+
+\usepackage{listings} % used to insert code snippets
+\usepackage{xcolor} % used to include specific colors
+
+\lstset{breaklines=true}
+
+% These are the appendices
+\begin{document}
+
+\appendix
+\chapter{Orientation Matrix Generator}
+This is the code used to generate the orientation matrices (known as the P and Q matrices in Bulatov \emph{et al.}'s code). Provision for calculating the matrices one of two ways is provided in-code through the use of command-line options.
+
+\lstinputlisting[language=Python, keywordstyle=\color{magenta}, identifierstyle=\color{blue}]{../../scripts/orientation_matrix.py}
+
+\chapter{genOrientationMatrix.sh Bash Script}
+This is a bash script used to read a file containing a CSV file containing misorientation angles, and use those angles to generate the P and Q matrices.  This script calls the script orientation\_matrix.py.
+
+\lstinputlisting[language=Bash,keywordstyle=\color{magenta}, identifierstyle=\color{cyan}]{../../scripts/genOrientationMatrices.sh}
+\end{document}
