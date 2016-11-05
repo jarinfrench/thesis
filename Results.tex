@@ -13,44 +13,28 @@
 
 \bibliographystyle{aip}
 \begin{document}
-\chapter{Results and Discussion}
-\section{Validation of P and Q Matrices}
-Validation of the generated P and Q matrices was done by comparing the energies profiles calculated from them with the copper energy profiles expected from the parameters defined in Bulatov \emph{et al.}'s code.  Results from this comparison are shown in \Cref{fig:compare100,fig:compare110,fig:compare111}.  The calculated energies match exactly the predicted values for all but a few points.  Each data set mismatches the expected energy at 1\textdegree{}, and the tilt data sets also see this mismatch at their second to last data point.
+\chapter{Results and Discussion\label{results}}
+\section{Validation of P and Q Matrices\label{results:PQValid}}
+The energy profiles calculated from the P and Q matrices were compared with the copper energy profiles expected from the parameters defined in Bulatov \emph{et al.}'s code to validate the generated P and Q matrices.  Results from this comparison for the \textlangle{}100\textrangle{} set are shown in \Cref{fig:compare100}, with all six subsets shown in \Cref{appfig:compare100,appfig:compare110,appfig:compare111}.  The calculated energies match exactly the predicted values for all but a few points.  Each data set mismatches the expected energy at 1\textdegree{}, and the tilt data sets also see this mismatch at their second to last data point.
 
 \begin{figure}[ht!]
  \centering
  
  \subfloat[]{\label{fig:compare100Twist}\includegraphics[scale=0.24]{Images/TestPQFit100Twist}}\quad
  \subfloat[]{\label{fig:compare100Tilt}\includegraphics[scale=0.26]{Images/TestPQFit100Tilt}}
- \caption{\label{fig:compare100} The \textlangle{}100\textrangle{} twist \protect\subref{fig:compare100Twist} and tilt \protect\subref{fig:compare100Tilt} results for the P and Q matrices as compared to Bulatov \emph{et al.}'s energy profiles. With the exception of the data points at 1\textdegree{} in both \protect\subref{fig:compare100Twist} and \protect\subref{fig:compare100Tilt} and 89\textdegree{} in \protect\subref{fig:compare100Tilt}, the energies calculated from the matrices matches the expected curves exactly.}
+ \caption{\label{fig:compare100} The \textlangle{}100\textrangle{} twist \protect\subref{fig:compare100Twist} and tilt \protect\subref{fig:compare100Tilt} results for the P and Q matrices as compared to Bulatov \emph{et al.}'s energy profiles. The expected value was calculated using Bulatov \emph{et al.}'s \lstinline!GB5DOF.m! MATLAB\textsuperscript{\textregistered} script with the default values.  The calculated values were found by inputting the matrices into the \lstinline!GB5DOF.m! script. With the exception of the data points at 1\textdegree{} in both \protect\subref{fig:compare100Twist} and \protect\subref{fig:compare100Tilt} and 89\textdegree{} in \protect\subref{fig:compare100Tilt}, the energies calculated from the matrices matches the expected curves exactly.}
 \end{figure}
 
-\begin{figure}[ht!]
- \centering
- 
- \subfloat[]{\label{fig:compare110Twist}\includegraphics[scale=0.24]{Images/TestPQFit110Twist}}\quad
- \subfloat[]{\label{fig:compare110Tilt}\includegraphics[scale=0.26]{Images/TestPQFit110Tilt}}
- \caption{\label{fig:compare110} The \textlangle{}110\textrangle{} twist \protect\subref{fig:compare110Twist} and tilt \protect\subref{fig:compare110Tilt} results for the P and Q matrices as compared to Bulatov \emph{et al.}'s energy profiles. With the exception of the data points at 1\textdegree{} in both \protect\subref{fig:compare110Twist} and \protect\subref{fig:compare110Tilt} and 179\textdegree{} in \protect\subref{fig:compare110Tilt}, the energies calculated from the matrices matches the expected curves exactly.}
-\end{figure}
+\section{Fitting Results\label{results:fit}}
+Comparisons for the one-dimensional (1D) results from Harbison\cite{harbison2015} and this work are presented in \Cref{fig:100} for the \textlangle{}100\textrangle{} subset.  \Cref{app:graphs} has the full set of comparison graphs shown in \Cref{appfig:100,appfig:110,appfig:111}.  The results show a general decrease in the grain boundary (GB) energies, allowing trends in the different subsets to emerge.  These trends allow for an all around better fit, but there are still some unexpected results present.  The parameters calculated from the fitting procedure are shown in \Cref{table:params} in \Cref{app:params}.
 
-\begin{figure}[ht!]
- \centering
- 
- \subfloat[]{\label{fig:compare111Twist}\includegraphics[scale=0.24]{Images/TestPQFit111Twist}}\quad
- \subfloat[]{\label{fig:compare111Tilt}\includegraphics[scale=0.26]{Images/TestPQFit111Tilt}}
- \caption{\label{fig:compare111} The \textlangle{}111\textrangle{} twist \protect\subref{fig:compare111Twist} and tilt \protect\subref{fig:compare111Tilt} results for the P and Q matrices as compared to Bulatov \emph{et al.}'s energy profiles. With the exception of the data points at 1\textdegree{} in both \protect\subref{fig:compare111Twist} and \protect\subref{fig:compare111Tilt} and 60\textdegree{} in \protect\subref{fig:compare111Tilt}, the energies calculated from the matrices matches the expected curves exactly.}
-\end{figure}
+Initial MD recalculations of the \textlangle{}100\textrangle{} symmetric tilt GB energies using the 800 K anneal (\Cref{fig:100Tilt}) showed a deep cusp around 28\textdegree{} which was unexpected.  An analysis of the molecular dynamics (MD) simulation results for this misorientation revealed, in this case, that the two crystals had realigned during the simulation due to abnormally high pressures.  This realignment caused the misorientation angle to change causing the GB energy to be much lower than expected.  Comparison with Harbison's simulation result revealed that the crystal structure from his simulation did not realign.  While Harbison's data was not calculated with the anneal and thus may not represent a global minimum, the data point follows the surrounding data's trend, justifying the use of his result.
 
-\section{Fitting Results}
-Comparisons for the 1D results from Harbison\cite{harbison2015} and this work are presented in \Cref{fig:100,fig:110,fig:111}.  The results show a general decrease in the GB energies, allowing trends in the different subsets to emerge.  These trends allow for an all around better fit, but there are still some unexpected results present.  The parameters calculated from the fitting procedure are shown in \Cref{table:params}.
+Of the symmetric tilt GB energy sets, the \textlangle{}110\textrangle{} set has the most improvement.  All three sets showed a general decrease in the energy, increasing confidence in the accuracy of the fit for GB energies in uranium dioxide (UO\textsubscript{2}).  However, each of these sets provides more opportunity for research.  The \textlangle{}100\textrangle{} set needs more work done for data points after around 50\textdegree{}.  The scatter associated with those points seems to be higher, and the possibility of a slight cusp presents itself around 68\textdegree{}.  It is unknown what behaviors are expected there though because there are so few data points in that region, so additional data would be beneficial.  The \textlangle{}110\textrangle{} set as mentioned shows the most improvement, but there are some low points in the second and third ``humps" not following the trend, indicating further possibility for cusps.  The first part of the function (the first hump) needs additional data to determine the possibility of a cusp between 40\textdegree{} and 50\textdegree{}.  The fitted curve to the \textlangle{}111\textrangle{} set now has an unexpected upward trend.  The scatter associated with these data points is also relatively high, leading to the possibility of a completely different set of functions to define this subset.
 
-Initial MD recalculations of the \textlangle{}100\textrangle{} symmetric tilt GB energies using the 800 K anneal (\Cref{fig:100Tilt}) showed a deep cusp around 28\textdegree{} which was unexpected.  An analysis of the MD simulation results for this misorientation revealed, in this case, that the two crystals had realigned during the simulation due to abnormally high pressures.  This realignment caused the misorientation angle to change causing the GB energy to be much lower than expected.  Comparison with the simulation result used by Harbison revealed that the crystal structure from his simulation did not realign.  While Harbison's data was not calculated with the anneal and thus may not represent a global minimum, the data point follows the trend set by the surrounding data, justifying the use of his result.
+The twist GB energy sets vary in their success.  The \textlangle{}100\textrangle{} set shows little difference between Harbison's \cite{harbison2015} work and this work.  There is a slight positive concavity at the end of the fitting for this subset, which is unexpected, indicating the possibility of a cusp.  This cusp may occur around 30\textdegree{}.  The \textlangle{}110\textrangle{} set has a definite decrease in the overall energies, creating a plateau profile.  An additional cusp around 40\textdegree{} is being considered.  The \textlangle{}111\textrangle{} set has the least improvement.  From the Bulatov \emph{et al.}'s work\cite{bulatov2014} this work expected to see a plateau as Harbison's fitting demonstrated.\cite{harbison2015}  Instead, the fitting produced a curved energy profile, indicating the potential for at least one cusp.  A possible location of this cusp is around 35\textdegree{}.  Preliminary work has been done with changing the number of parameters in an effort to maximize the quality of the fit with a minimal number of parameters. \Cref{fig:updatedGraphs} compares the current fitting to the tentative new fitting for three of the six 1D subsets.  These modified fits in general seem to fit better at the cost of additional parameters, with a smaller $\chi_{\textnormal{red}}^2$ value.  Still more parameters may be needed to accommodate additional cusps however.
 
-Of the symmetric tilt GB energy sets, the \textlangle{}110\textrangle{} set has the most improvement.  All three sets showed a general decrease in the energy, increasing confidence in the accuracy of the fit for GB energies in UO\textsubscript{2}.  However, each of these sets provides more opportunity for research.  The \textlangle{}100\textrangle{} set needs more work done for data points after around 50\textdegree{}.  The scatter associated with those points seems to be higher, and the possibility of a slight cusp presents itself around 68\textdegree{}.  It is unknown what behaviors are expected there though because there are so few data points in that region, so additional data would be beneficial.  The \textlangle{}110\textrangle{} set as mentioned shows the most improvement, but there are some low points in the second and third ``humps" not following the trend, indicating further possibility for cusps.  The first part of the function (the first hump) needs additional data to determine the possibility of a cusp between 40\textdegree{} and 50\textdegree{}.  The fitted curve to the \textlangle{}111\textrangle{} set now has an unexpected upward trend.  The scatter associated with these data points is also relatively high, leading to the possibility of a completely different set of functions to define this subset.
-
-The twist GB energy sets vary in their success.  The \textlangle{}100\textrangle{} set shows little difference between Harbison's \cite{harbison2015} work and this work.  There is a slight positive concavity at the end of the fitting for this subset, which is unexpected, indicating the possibility of a cusp.  This cusp may occur around 30\textdegree{}.  The \textlangle{}110\textrangle{} set has a definite decrease in the overall energies, creating a plateau profile.  An additional cusp around 40\textdegree{} is being considered.  The \textlangle{}111\textrangle{} set has the least improvement.  From the work done by Bulatov \emph{et al.} \cite{bulatov2014} this work expected to see a plateau as demonstrated by Harbison's \cite{harbison2015} fitting.  Instead, the fitting produced a curved energy profile, indicating the potential for at least one cusp.  A possible location of this cusp is around 35\textdegree{}.  Preliminary work has been done with changing the number of parameters in an effort to maximize the quality of the fit with a minimal number of parameters. \Cref{fig:updatedGraphs} compares the current fitting to the tentative new fitting for three of the six 1D subsets.  These modified fits in general seem to fit better at the cost of additional parameters, with a smaller $\chi_{\textnormal{red}}^2$ value.  Still more parameters may be needed to accommodate additional cusps however.
-
-\Cref{fig:100PQ,fig:110PQ,fig:111PQ} show the comparison between the values calculated from the P and Q matrices and the expected values from the MD calculations.  There is an unsolved scaling issue with the \textlangle{}100\textrangle{} tilt subset.  Overall, the results from the P and Q matrices match the fitted values, with a few anomalies needing to be addressed.
+\Cref{fig:100PQ} shows the comparison between the values calculated from the P and Q matrices and the expected values from the MD calculations for the \textlangle{}100\textrangle{} subset.  All six subsets are shown in \Cref{appfig:100PQ,appfig:110PQ,appfig:111PQ} in \Cref{app:graphs}.  There is an unsolved scaling issue with the \textlangle{}100\textrangle{} tilt subset.  Overall, the results from the P and Q matrices match the fitted values, with a few anomalies needing to be addressed.
 
 \begin{figure}[ht!]
  \centering
@@ -63,44 +47,8 @@ The twist GB energy sets vary in their success.  The \textlangle{}100\textrangle
 
 \begin{figure}[ht!]
  \centering
- 
- \subfloat[]{\label{fig:110Twist}\includegraphics[scale=0.26]{Images/110TwistComparison}}\quad
- \subfloat[]{\label{fig:110Tilt}\includegraphics[scale=0.26]{Images/110SymmTiltComparison}}
- \caption{\label{fig:110} The \textlangle{}110\textrangle{} twist \protect\subref{fig:110Twist} and tilt \protect\subref{fig:110Tilt} results.  Significant decreases in energy are found for both subsets.  Possible cusp locations are around 40\textdegree{} in the twist subset, and around 40\textdegree{}, 90\textdegree{}, and 140\textdegree in the tilt subset.}
- 
-\end{figure}
-
-\begin{figure}[ht!]
- \centering
- 
- \subfloat[]{\label{fig:111Twist}\includegraphics[scale=0.26]{Images/111TwistComparison}}\quad
- \subfloat[]{\label{fig:111Tilt}\includegraphics[scale=0.26]{Images/111SymmTiltComparison}}
- \caption{\label{fig:111} The \textlangle{}111\textrangle{} twist \protect\subref{fig:111Twist} and tilt \protect\subref{fig:111Tilt} results.  Some energies are found to be lower, but some are also found to be higher.  The positive concavity present in these results is unexpected, and could indicate the presence of cusps.  A possible location for the twist subset is around 33\textdegree{}.  Additional data is needed to determine possible cusp locations for the tilt subset.}
- 
-\end{figure}
-
-\begin{figure}[ht!]
- \centering
- 
- \subfloat[]{\label{fig:100TwistPQ}\includegraphics[scale=0.26]{Images/100TwistPQvsMD}}\quad
- \subfloat[]{\label{fig:100TiltPQ}\includegraphics[scale=0.26]{Images/100TiltPQvsMD}}
- \caption{\label{fig:100PQ} A comparison of the expected value of the fitted function with the values calculated using the P and Q matrices for the \textlangle{}100\textrangle{} 1D subsets.  The MD values are shown for reference.  \protect\subref{fig:100TwistPQ} PQ results follow exactly the fitted curve.  \protect\subref{fig:100TiltPQ} has a scaling issue yet to be fixed.  It is uncertain what is causing the scaling issue for this subset.}
-\end{figure}
-
-\begin{figure}[ht!]
- \centering
- 
- \subfloat[]{\label{fig:110TwistPQ}\includegraphics[scale=0.26]{Images/110TwistPQvsMD}}\quad
- \subfloat[]{\label{fig:110TiltPQ}\includegraphics[scale=0.26]{Images/110TiltPQvsMD}}
- \caption{\label{fig:110PQ} A comparison of the expected value of the fitted function with the values calculated using the P and Q matrices for the \textlangle{}110\textrangle{} 1D subsets.  MD values are shown for reference.  \protect\subref{fig:110TwistPQ} follows the fitted result until the cusp, at which point some anomalies appear.  The results from the PQ matrices dip well below the expected value at the cusp, and never make it back to the original fitted line. \protect\subref{fig:110TiltPQ} has a similar issue on a lesser scale.  Only two of the calculated points do not follow the fitted curve.  The endpoint is expected to return a zero value, where the PQ matrices calculated a value slightly higher.  There is also an unexpected cusp from the PQ matrices in the middle of the second hump.  All other data points follow the fitted curve exactly.}
-\end{figure}
-
-\begin{figure}[ht!]
- \centering
- 
- \subfloat[]{\label{fig:111TwistPQ}\includegraphics[scale=0.26]{Images/111TwistPQvsMD}}\quad
- \subfloat[]{\label{fig:111TiltPQ}\includegraphics[scale=0.26]{Images/111TiltPQvsMD}}
- \caption{\label{fig:111PQ} A comparison of the expected value of the fitted function with the values calculated using the P and Q matrices for the \textlangle{}111\textrangle{} 1D subsets.  MD values are shown for reference.  \protect\subref{fig:111TwistPQ} closely follows the expected fitted values, but has a slight error throughout.  \protect\subref{fig:111TiltPQ} follows the expected values exactly in the center of the fitting, but misses slightly for lower angle boundaries, and misses completely at the end.}
+ \includegraphics[scale=0.26]{Images/100TiltPQvsMD}
+ \caption{\label{fig:100PQ} A comparison of the expected value of the fitted function with the values calculated using the P and Q matrices for the \textlangle{}100\textrangle{} 1D tilt subset.  The MD values are shown for reference.  There is a scaling issue yet to be fixed, but it is uncertain what is causing the scaling issue for this subset.}
 \end{figure}
 
 \begin{figure}[ht!]
@@ -111,16 +59,16 @@ The twist GB energy sets vary in their success.  The \textlangle{}100\textrangle
  \end{minipage}%
  \begin{minipage}{.5\linewidth}
  \centering
- \subfloat[]{\label{fig:updated110Twist}\includegraphics[scale=0.42]{Images/110Twist_marquardt}}
+ \subfloat[]{\label{fig:updated110Twist}\includegraphics[scale=0.42]{Images/110Twist_vary_shaping_factor}}
  \end{minipage} \par\medskip
  \centering
  \subfloat[]{\label{fig:updated111Twist}\includegraphics[scale=0.42]{Images/111Twist_marquardt}}
  
- \caption{\label{fig:updatedGraphs} An comparison of current fitting functions with a possible change to the functions.  Original functions are shown as the dashed lines, with the updated functions shown as the solid lines.  MD results are shown for reference. \protect\subref{fig:updated100Twist} shows a possible change from the RSW functions to a simple square root function multiplied by an exponential decay.  There is no theoretical basis behind this change however. \protect\subref{fig:updated110Twist} attempts to fit to a cusp around 40\textdegree{}.  Further work can be done to find a better fit for this subset. \protect\subref{fig:updated111Twist} shows the most potential improvement.  The potential fit increases the total number of parameters by three to fit to the cusp around 28\textdegree.  A quick glance at the MD values compared to the fit shows a great improvement from the current fit.}
+ \caption{\label{fig:updatedGraphs} An comparison of current fitting functions with a possible change to the functions.  Original functions are shown as the dashed lines, with the updated functions shown as the solid lines.  MD results are shown for reference. \protect\subref{fig:updated100Twist} shows a possible change from the Read-Shockley-Wolf (RSW) functions to a simple square root function multiplied by an exponential decay.  There is no theoretical basis behind this change however. \protect\subref{fig:updated110Twist} attempts to fit to a cusp around 40\textdegree{}.  Further work can be done to find a better fit for this subset. \protect\subref{fig:updated111Twist} shows the most potential improvement.  The potential fit increases the total number of parameters by three to fit to the cusp around 28\textdegree.  A quick glance at the MD values compared to the fit shows a great improvement from the current fit.}
  
 \end{figure}
 
-\section{Reduced Chi-square Results}
+\section{Reduced Chi-square Results\label{results:chi2red}}
 The $\chi_{\textnormal{red}}^2$ values are much smaller than one for every data set regardless of the method used to calculate the statistic, with the exception of the \textlangle{}100\textrangle{} symmetric tilt subset using the P and Q matrices.  This subset has a high $\chi_{\textnormal{red}}^2$ value due to the scaling issue.  Because of the low $\chi_{\textnormal{red}}^2$ values, the fitted functions are known to overfit the data.\cite{bevington2003}  \Cref{table:chi2} lists the $\chi_{\textnormal{red}}^2$ values for the 1D subsets using the two different methods for calculation. \Cref{eq:chi2} shows the equation used to calculate the $\chi^2_{\textnormal{red}}$ value:
 
 \begin{equation}
