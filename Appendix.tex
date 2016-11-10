@@ -2,6 +2,10 @@
 
 \usepackage{listings} % used to insert code snippets
 \usepackage{xcolor} % used to include specific colors
+\usepackage{longtable}
+\usepackage{textcomp}
+\usepackage{subfig}
+\usepackage{graphicx}
 
 \lstset{breaklines=true}
 
@@ -133,3 +137,4 @@ This code generates the orientation matrices (known as the P and Q matrices in B
 This bash script reads a CSV file containing misorientation angles data, and uses those angles to generate the P and Q matrices.  This script calls the script \lstinline!orientation_matrix.py!.
 
 \lstinputlisting[language=Bash,keywordstyle=\color{magenta}, identifierstyle=\color{cyan},breaklines=true]{../../scripts/genOrientationMatrices.sh}
+\end{document}
