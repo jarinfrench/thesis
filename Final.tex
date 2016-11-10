@@ -344,7 +344,7 @@ where $\bm{I}$ is the 3x3 identity matrix, $\theta$ is the angle rotated through
 \right]
 \end{equation}
 
-This work calculated the rotation matrices two different ways with this orientation matrix formulation.  The first method simply used the MARMOT-generated rotation matrices.  A second method calculated the rotation matrices using geometric arguments (see \Cref{fig:PlaneNorms}).  From these arguments the normals are identified in \Cref{table:geometricgbnorms}.
+This work calculated the rotation matrices two different ways with this orientation matrix formulation.  The first method simply used the MARMOT-generated rotation matrices.  A second method calculated the rotation matrices using geometric arguments (see \Cref{fig:PlaneNorms}).  From these arguments the normals are identified in \Cref{table:geometricgbnorms}.  \Cref{app:RotationMatrix} shows the code used to generate the rotation matrices.
 
 \begin{figure}[ht!]
 \begin{minipage}{0.33\linewidth}
@@ -400,7 +400,7 @@ Axis & Boundary Type & GB Normal \\
 \subsubsection{Bunge Rotation Matrix\label{PQ:BungeMat}}
 The Bunge rotation matrix (see \Cref{eq:bungeMat}) is what MARMOT uses to create the orientation matrices.  This work used various methods to calculate the Euler angles, of which three are briefly described here. The Euler angles (once calculated) were used in the first two methods to calculate the entirety of the rotation matrix.
 
-First, this work tried to use scripts developed to calculate the various Euler angles for MARMOT.  These scripts did not work because of the same assumptions made earlier about the orientation of the GB, namely, that all pure tilt GBs have a normal of 010, and that all pure twist GBs have a normal of $\bar{1}$00.  The difference between MARMOT's boundary conditions and the boundary conditions of this work is that GBs in this work are assumed to be either perpendicular or parallel to the rotation axis, as opposed to always being along the x or y axis.
+First, this work tried to use scripts developed to calculate the various Euler angles for MARMOT.  These scripts did not work because of the same assumptions made earlier about the orientation of the GB, namely, that all pure tilt GBs have a normal of 010, and that all pure twist GBs have a normal of $\bar{1}$00.  The difference between MARMOT's boundary conditions and the boundary conditions of this work is that GBs in this work are assumed to be either perpendicular or parallel to the rotation axis, as opposed to always being along the $x$- or $y$-axis.
 
 The second method used an open-source MATLAB\textsuperscript{\textregistered} package called MTEX.\cite{bachmann2010}  This package calculates Euler angles using quaternions.  These Euler angles did not generate the correct results either, for the most part creating the same sorts of graphs as the MARMOT method.  It is uncertain why this method did not work.
 
@@ -550,6 +550,7 @@ Further work could be done to generalize this function to all polycrystalline ma
 
 % Start labeling chapters with letters and calling them appendices
 \appendix
+\renewcommand\chaptername{Appendix}
 
  % Make the bibliography.
  \cleardoublepage
@@ -673,14 +674,18 @@ Array number & Parameter name & Parameter value \\
 \chapter{Orientation Matrix Generator\label{app:OrientationMatrix}}
 This code generates the orientation matrices (known as the P and Q matrices in Bulatov \emph{et al.}'s code). Provision for calculating the matrices one of two ways is provided in-code through the use of command-line options.
 
-\lstinputlisting[language=Python, keywordstyle=\color{magenta}, identifierstyle=\color{blue},breaklines=true]{../../scripts/orientation_matrix.py}
+\lstinputlisting[language=Python, keywordstyle=\color{magenta}, identifierstyle=\color{blue},breaklines=true, firstline=61]{../../scripts/orientation_matrix.py}
+
+\chapter{Rotation Matrix Generator\label{app:RotationMatrix}}
+This code generates the rotation matrices used to rotate the axes to the [100] direction as required by Bulatov \emph{et al.}'s script.
+
+\lstinputlisting[language=Python, keywordstyle=\color{magenta}, identifierstyle=\color{blue}, breaklines=true, firstline=25]{../../scripts/rotation_matrix.py}
 
 \chapter{genOrientationMatrix.sh Bash Script\label{app:genOrientationMatrix}}
 This bash script reads a CSV file containing misorientation angles data, and uses those angles to generate the P and Q matrices.  This script calls the script \lstinline!orientation_matrix.py!.
 
 \lstinputlisting[language=Bash,keywordstyle=\color{magenta}, identifierstyle=\color{cyan},breaklines=true]{../../scripts/genOrientationMatrices.sh}
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
  % Make the index
