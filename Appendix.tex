@@ -6,6 +6,8 @@
 \usepackage{textcomp}
 \usepackage{subfig}
 \usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{bm}
 
 \lstset{breaklines=true}
 
@@ -79,13 +81,36 @@ Array number & Parameter name & Parameter value \\
 43 & \textlangle{}111\textrangle{} Asymmetric Tilt Scale Factor & 0.053417 \\
 \end{longtable}
 
+\chapter{Grain Boundary Representations\label{app:gbRep}}
+Part of Bulatov \emph{et al.}'s development of their 5D function was accomplished through visual representations of the GB space.  However, the size of the five-space in which GBs reside makes representing them difficult.  Different methods have been developed to represent them, each with their advantages and disadvantages.  Three of these methods are the axis-angle representation, the Rodrigues representation, and the fundamental zone representation.  These methods, though described separately, can be used together to form a better picture of what the GB space looks like (see for example \Cref{fig:bulatovRodrigues} which combines the Rodrigues representation and the fundamental zone representation).
+
+\section{Axis-Angle Representation\label{GBReps:AA}}
+The axis-angle representation is the simplest of the three described here.  The axis of rotation of the GB specifies the point in axis-angle space, and the angle of misorientation between the two grains at the GB specifies the magnitude of the vector.  Thus, the axis ($\bm{a}$, where $\bm{a}$ has components $a_x$, $a_y$, and $a_z$) and the angle ($\theta$) mathematically represent an axis-angle vector as:
+\begin{equation}
+\bm{A} = \bm{a}\ \theta
+\label{eq:aaVec}
+\end{equation} 
+
+The axis-angle space can only take into account three degrees of freedom: the two angles specifying the axis, and the angle rotated through.  Thus, axis-angle space cannot fully visualize all of the necessary information contained in the full 5D space.\cite{frank1988} This representation suffers from the difficulties of understanding an infinite space because it maps an axis and an angle onto a Cartesian coordinate system.  Without the help of additional methods, this infinite space remains difficuly to understand.  The best uses of this representation focus on using it as a starting point to move to other, more robust representations, and to represent the misorientation between two grains.\cite{randle2000}
+
+\section{Rodrigues Representation\label{GBReps:Rodrigues}}
+The Rodrigues representation (sometimes called the ``Rodrigues-Frank" representation) uses Rodrigues vectors to represent rotations in Rodrigues space.  This representation takes ideas from the axis-angle space, but makes a few changes allowing crystal symmetries to be taken into account.  The orientation of the GB normal still specifies the point in space, but the tangent of half the angle represents the magnitude of the vector. Thus, a Rodrigues vector can be represented as:\cite{morawiec1996, becker1989, frank1988, randle2000, priester2013}
+\begin{equation}
+\bm{R}=\bm{a}\ \textnormal{tan}\left(\frac{\theta}{2}\right)
+\label{eq:rodriguesVec}
+\end{equation}
+Some researchers favor this representation over others because of the lack of curvature such a mapping entails.\cite{frank1988, randle2000}  However, still only three of the five degrees of freedom are specified.  Bulatov \emph{et al.}\ attached a unit vector at the points along the axis to represent the other two DoFs in \Cref{fig:bulatovRodrigues}. A parallel vector represents a twist boundary, and a perpendicular vector represents a tilt boundary.  Anything else represents a mix of twist and tilt (or a mixed boundary).  One limitation of Rodrigues space lies in the fact that it also maps to an infinite space.\cite{frank1988, kirch2008}.
+
+\section{Fundamental Zone Representation\label{GBReps:FunZone}}
+The fundamental zone best graphically represents the full 5D GB.  This representation takes advantage of the symmetries inherent in crystals\cite{stokes2007} to simplify an infinite space into a compact, finite area called the fundamental zone.\cite{bulatov2014, patala2013, homer2015, morawiec1996, patala2012}  Every point within the space represents a unique orientation, and every point outside the space can be represented as a point inside the space through symmetry operations.\cite{morawiec1996, becker1989, frank1988}  Bulatov \emph{et al.}\ used this idea in connection with Rodrigues space to create \Cref{fig:bulatovRodrigues}.  In Rodrigues space, the crystal symmetries of the material determine the shape of the fundamental zone.\cite{patala2013, morawiec1996}  For fcc crystals, the fundamental zone takes the form of a truncated tetrahedron.\cite{bulatov2014}  The edges of the fundamental zone in Rodrigues space represent the high-symmetry rotation axes, and points on one face can represent another point on a different face of the fundamental zone.  
+
 \chapter{Graphs\label{app:graphs}}
 \begin{figure}[ht!]
  \centering
  
  \subfloat[]{\label{appfig:compare100Twist}\includegraphics[scale=0.24]{Images/TestPQFit100Twist}}\quad
  \subfloat[]{\label{appfig:compare100Tilt}\includegraphics[scale=0.26]{Images/TestPQFit100Tilt}}
- \caption[A comparison of the \textlangle{}100\textrangle{} copper curves with the calculated results.]{\label{appfig:compare100} The \textlangle{}100\textrangle{} twist \protect\subref{appfig:compare100Twist} and tilt \protect\subref{appfig:compare100Tilt} results for the P and Q matrices as compared to Bulatov \emph{et al.}'s energy profiles. The expected value was calculated using Bulatov \emph{et al.}'s \lstinline!GB5DOF.m! MATLAB\textsuperscript{\textregistered} script with the default values.  The calculated values were found by inputting the matrices into the \lstinline!GB5DOF.m! script. With the exception of the data points at 1\textdegree{} in both \protect\subref{appfig:compare100Twist} and \protect\subref{appfig:compare100Tilt} and 89\textdegree{} in \protect\subref{appfig:compare100Tilt}, the energies calculated from the matrices matches the expected curves exactly.}
+ \caption[A comparison of the \textlangle{}100\textrangle{} copper curves with the calculated results.]{\label{appfig:compare100} The \textlangle{}100\textrangle{} twist \protect\subref{appfig:compare100Twist} and tilt \protect\subref{appfig:compare100Tilt} results for the P and Q matrices as compared to Bulatov \emph{et al.}'s energy profiles. Bulatov \emph{et al.}'s \lstinline!GB5DOF.m! MATLAB\textsuperscript{\textregistered} script calculated the expected values by using the default parameters.  The calculated values were found by inputting the matrices into the \lstinline!GB5DOF.m! script. With the exception of the data points at 1\textdegree{} in both \protect\subref{appfig:compare100Twist} and \protect\subref{appfig:compare100Tilt} and 89\textdegree{} in \protect\subref{appfig:compare100Tilt}, the energies calculated from the matrices matches the expected curves exactly.}
 \end{figure}
 
 \begin{figure}[ht!]
@@ -93,7 +118,7 @@ Array number & Parameter name & Parameter value \\
  
  \subfloat[]{\label{appfig:compare110Twist}\includegraphics[scale=0.24]{Images/TestPQFit110Twist}}\quad
  \subfloat[]{\label{appfig:compare110Tilt}\includegraphics[scale=0.26]{Images/TestPQFit110Tilt}}
- \caption[A comparison of the \textlangle{}110\textrangle{} copper curves with the calculated results.]{\label{appfig:compare110} The \textlangle{}110\textrangle{} twist \protect\subref{appfig:compare110Twist} and tilt \protect\subref{appfig:compare110Tilt} results for the P and Q matrices as compared to Bulatov \emph{et al.}'s energy profiles. The expected value was calculated using Bulatov \emph{et al.}'s \lstinline!GB5DOF.m! MATLAB\textsuperscript{\textregistered} script with the default values.  The calculated values were found by inputting the matrices into the \lstinline!GB5DOF.m! script. With the exception of the data points at 1\textdegree{} in both \protect\subref{appfig:compare110Twist} and \protect\subref{appfig:compare110Tilt} and 179\textdegree{} in \protect\subref{appfig:compare110Tilt}, the energies calculated from the matrices matches the expected curves exactly.}
+ \caption[A comparison of the \textlangle{}110\textrangle{} copper curves with the calculated results.]{\label{appfig:compare110} The \textlangle{}110\textrangle{} twist \protect\subref{appfig:compare110Twist} and tilt \protect\subref{appfig:compare110Tilt} results for the P and Q matrices as compared to Bulatov \emph{et al.}'s energy profiles. Bulatov \emph{et al.}'s \lstinline!GB5DOF.m! MATLAB\textsuperscript{\textregistered} script calculated the expected values by using the default parameters.  The calculated values were found by inputting the matrices into the \lstinline!GB5DOF.m! script. With the exception of the data points at 1\textdegree{} in both \protect\subref{appfig:compare110Twist} and \protect\subref{appfig:compare110Tilt} and 179\textdegree{} in \protect\subref{appfig:compare110Tilt}, the energies calculated from the matrices matches the expected curves exactly.}
 \end{figure}
 
 \begin{figure}[ht!]
@@ -101,7 +126,7 @@ Array number & Parameter name & Parameter value \\
  
  \subfloat[]{\label{appfig:compare111Twist}\includegraphics[scale=0.24]{Images/TestPQFit111Twist}}\quad
  \subfloat[]{\label{appfig:compare111Tilt}\includegraphics[scale=0.26]{Images/TestPQFit111Tilt}}
- \caption[A comparison of the \textlangle{}111\textrangle{} copper curves with the calculated results.]{\label{appfig:compare111} The \textlangle{}111\textrangle{} twist \protect\subref{appfig:compare111Twist} and tilt \protect\subref{appfig:compare111Tilt} results for the P and Q matrices as compared to Bulatov \emph{et al.}'s energy profiles. The expected value was calculated using Bulatov \emph{et al.}'s \lstinline!GB5DOF.m! MATLAB\textsuperscript{\textregistered} script with the default values.  The calculated values were found by inputting the matrices into the \lstinline!GB5DOF.m! script. With the exception of the data points at 1\textdegree{} in both \protect\subref{appfig:compare111Twist} and \protect\subref{appfig:compare111Tilt} and 60\textdegree{} in \protect\subref{appfig:compare111Tilt}, the energies calculated from the matrices matches the expected curves exactly.}
+ \caption[A comparison of the \textlangle{}111\textrangle{} copper curves with the calculated results.]{\label{appfig:compare111} The \textlangle{}111\textrangle{} twist \protect\subref{appfig:compare111Twist} and tilt \protect\subref{appfig:compare111Tilt} results for the P and Q matrices as compared to Bulatov \emph{et al.}'s energy profiles. Bulatov \emph{et al.}'s \lstinline!GB5DOF.m! MATLAB\textsuperscript{\textregistered} script calculated the expected values by using the default parameters. The calculated values were found by inputting the matrices into the \lstinline!GB5DOF.m! script. With the exception of the data points at 1\textdegree{} in both \protect\subref{appfig:compare111Twist} and \protect\subref{appfig:compare111Tilt} and 60\textdegree{} in \protect\subref{appfig:compare111Tilt}, the energies calculated from the matrices matches the expected curves exactly.}
 \end{figure}
 
 \begin{figure}[ht!]
@@ -109,7 +134,7 @@ Array number & Parameter name & Parameter value \\
  
  \subfloat[]{\label{appfig:100TwistPQ}\includegraphics[scale=0.26]{Images/100TwistPQvsMD}}\quad
  \subfloat[]{\label{appfig:100TiltPQ}\includegraphics[scale=0.26]{Images/100TiltPQvsMD}}
- \caption[Comparison of the PQ matrices with the expected result for \textlangle{}100\textrangle{} 1D subset.]{\label{appfig:100PQ} A comparison of the expected value of the fitted function with the values calculated using the P and Q matrices for the \textlangle{}100\textrangle{} 1D subsets.  The MD values are shown for reference.  \protect\subref{appfig:100TwistPQ} PQ results follow exactly the fitted curve.  \protect\subref{appfig:100TiltPQ} has a scaling issue yet to be fixed.  It is uncertain what is causing the scaling issue for this subset.}
+ \caption[Comparison of the PQ matrices with the expected result for \textlangle{}100\textrangle{} 1D subset.]{\label{appfig:100PQ} A comparison of the expected value of the fitted function with the values calculated using the P and Q matrices for the \textlangle{}100\textrangle{} 1D subsets.  The MD values are shown for reference.  \protect\subref{appfig:100TwistPQ} PQ results follow exactly the fitted curve.  \protect\subref{appfig:100TiltPQ} has a scaling issue yet to be fixed.  The cause of the scaling issue remains unknown.}
 \end{figure}
 
 \begin{figure}[ht!]
@@ -117,7 +142,7 @@ Array number & Parameter name & Parameter value \\
  
  \subfloat[]{\label{appfig:110TwistPQ}\includegraphics[scale=0.26]{Images/110TwistPQvsMD}}\quad
  \subfloat[]{\label{appfig:110TiltPQ}\includegraphics[scale=0.26]{Images/110TiltPQvsMD}}
- \caption[Comparison of the PQ matrices with the expected result for \textlangle{}110\textrangle{} 1D subset.]{\label{appfig:110PQ} A comparison of the expected value of the fitted function with the values calculated using the P and Q matrices for the \textlangle{}110\textrangle{} 1D subsets.  MD values are shown for reference.  \protect\subref{appfig:110TwistPQ} follows the fitted result until the cusp, at which point some anomalies appear.  The results from the PQ matrices dip well below the expected value at the cusp, and never make it back to the original fitted line. \protect\subref{appfig:110TiltPQ} has a similar issue on a lesser scale.  Only two of the calculated points do not follow the fitted curve.  The endpoint is expected to return a zero value, where the PQ matrices calculated a value slightly higher.  There is also an unexpected cusp from the PQ matrices in the middle of the second hump.  All other data points follow the fitted curve exactly.}
+ \caption[Comparison of the PQ matrices with the expected result for \textlangle{}110\textrangle{} 1D subset.]{\label{appfig:110PQ} A comparison of the expected value of the fitted function with the values calculated using the P and Q matrices for the \textlangle{}110\textrangle{} 1D subsets.  MD values are shown for reference.  \protect\subref{appfig:110TwistPQ} follows the fitted result until the cusp, at which point some anomalies appear.  The results from the PQ matrices dip well below the expected value at the cusp, and never make it back to the original fitted line. \protect\subref{appfig:110TiltPQ} has a similar issue on a lesser scale.  Only two of the calculated points do not follow the fitted curve.  At the endpoint the expected value is zero, but the PQ matrices calculated a value slightly higher.  Also, an unexpected cusp from the PQ matrices appears in the middle of the second hump.  All other data points follow the fitted curve exactly.}
 \end{figure}
 
 \begin{figure}[ht!]
@@ -129,12 +154,17 @@ Array number & Parameter name & Parameter value \\
 \end{figure}
 
 \chapter{Orientation Matrix Generator\label{app:OrientationMatrix}}
-This code generates the orientation matrices (known as the P and Q matrices in Bulatov \emph{et al.}'s code). Provision for calculating the matrices one of two ways is provided in-code through the use of command-line options.
+This code generates the orientation matrices (known as the P and Q matrices in Bulatov \emph{et al.}'s code). Provision for calculating the matrices one of two ways appears in-code through the use of command-line options.
 
-\lstinputlisting[language=Python, keywordstyle=\color{magenta}, identifierstyle=\color{blue},breaklines=true]{../../scripts/orientation_matrix.py}
+\lstinputlisting[language=Python, breaklines=true, firstline=61]{../../scripts/orientation_matrix.py}
+
+\chapter{Rotation Matrix Generator\label{app:RotationMatrix}}
+This code generates the rotation matrices used to rotate the axes to the [100] direction as required by Bulatov \emph{et al.}'s script.
+
+\lstinputlisting[language=Python, breaklines=true, firstline=25]{../../scripts/rotation_matrix.py}
 
 \chapter{genOrientationMatrix.sh Bash Script\label{app:genOrientationMatrix}}
 This bash script reads a CSV file containing misorientation angles data, and uses those angles to generate the P and Q matrices.  This script calls the script \lstinline!orientation_matrix.py!.
 
-\lstinputlisting[language=Bash,keywordstyle=\color{magenta}, identifierstyle=\color{cyan},breaklines=true]{../../scripts/genOrientationMatrices.sh}
+\lstinputlisting[language=Bash,breaklines=true]{../../scripts/genOrientationMatrices.sh}
 \end{document}
